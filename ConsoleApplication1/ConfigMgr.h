@@ -60,7 +60,7 @@ private:
 	void ParseFloat(vector<string> content);
 	void ParseDouble(vector<string> content);
 
-	void ParseeString(vector<string> content);
+	void ParseString(vector<string> content);
 
 	void ParseInt2Array(vector<string>content);
 

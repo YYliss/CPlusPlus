@@ -76,7 +76,7 @@ void ConfigObject::ParseDouble(vector<string> content)
 	}
 }
 
-void ConfigObject::ParseeString(vector<string> content)
+void ConfigObject::ParseString(vector<string> content)
 {
 	for (size_t i = 0; i < content.size(); i++)
 	{
