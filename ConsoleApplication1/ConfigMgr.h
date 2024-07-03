@@ -9,6 +9,7 @@
 using namespace std ;
 
 class ConfigMgr;
+class ConfigObject;
 
 struct ConfigIntArray {
 public :
@@ -18,18 +19,16 @@ public :
 class ConfigRow {
 private:
 	int row;
+	ConfigObject* parent;
 public:
-	ConfigRow(int row);
+	ConfigRow(int row, ConfigObject* parent);
+	unsigned int GetUInt32(string name);
+	string GetString(string name);
+	unsigned char GetUChar(string name);
 };
 
-class ConfigObject {
-
-	friend class ConfigMgr;
-private:
-	void Load(string path);
-
-private:
-
+class ConfigData {
+public:
 	vector<char> char_array;
 	vector<unsigned char> uchar_array;
 
@@ -40,32 +39,46 @@ private:
 	vector<int> int_array;
 
 	vector<string> string_array;
-	
+
 	vector<float> float_array;
 	vector<double> double_array;
 
 	vector<bool> bool_array;
 
 	vector<ConfigIntArray*> int2Array;
+};
 
-	void ParseChar(vector<string> content);
-	void ParseUChar(vector<string> content);
+class ConfigObject {
 
-	void ParseShort(vector<string> content);
-	void ParseUShort(vector<string> content);
-
-	void ParseInt(vector<string> content);
-	void ParseUInt(vector<string> content);
-
-	void ParseFloat(vector<string> content);
-	void ParseDouble(vector<string> content);
-
-	void ParseString(vector<string> content);
-
-	void ParseInt2Array(vector<string>content);
+	friend class ConfigMgr;
+	friend class ConfigRow;
+private:
+	void Load(string path);
 
 public:
-	vector<ConfigRow> Data;
+	vector<ConfigRow*> Data;
+private:
+
+	map<string, ConfigData*> mAllData;
+
+	ConfigData* CreateData(string name);
+
+	void ParseChar(string name, vector<string> content);
+	void ParseUChar(string name, vector<string> content);
+
+	void ParseShort(string name, vector<string> content);
+	void ParseUShort(string name, vector<string> content);
+
+	void ParseInt(string name, vector<string> content);
+	void ParseUInt(string name, vector<string> content);
+
+	void ParseFloat(string nanme, vector<string> content);
+	void ParseDouble(string name, vector<string> content);
+
+	void ParseString(string name, vector<string> content);
+
+	void ParseInt2Array(string name, vector<string>content);
+
 };
 
 class ConfigMgr
@@ -76,5 +89,6 @@ private:
 public:
 	static ConfigMgr* GetPtr();
 	void Start();
+	ConfigObject* Get(string name);
 };
 

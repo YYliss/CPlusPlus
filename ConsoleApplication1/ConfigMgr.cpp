@@ -1,94 +1,141 @@
 #include "ConfigMgr.h"
 
-ConfigRow::ConfigRow(int row)
+ConfigRow::ConfigRow(int row, ConfigObject* parent)
 {
 	this->row = row;
+	this->parent = parent;
 }
 
-void ConfigObject::ParseChar(vector<string> content)
+unsigned int ConfigRow::GetUInt32(string name)
 {
+	if (parent->mAllData.find(name) != parent->mAllData.end())
+	{
+		ConfigData* data = parent->mAllData.at(name);
+		return data->uint_array[row];
+	}
+	return 0;
+}
+
+string ConfigRow::GetString(string name)
+{
+	if (parent->mAllData.find(name) != parent->mAllData.end())
+	{
+		return parent->mAllData.at(name)->string_array[row];
+	}
+	return "";
+}
+
+unsigned char ConfigRow::GetUChar(string name)
+{
+	if (parent->mAllData.find(name) != parent->mAllData.end())
+	{
+		return parent->mAllData.at(name)->uchar_array[row];
+	}
+	return 0;
+}
+
+ConfigData* ConfigObject::CreateData(string name)
+{
+	ConfigData* data = new ConfigData();
+	mAllData[name] = data;
+	return data;
+}
+void ConfigObject::ParseChar(string name, vector<string> content)
+{
+	ConfigData* data = CreateData(name);
 	for (size_t i = 0; i < content.size(); i++)
 	{
 		char value = stoi(content[i]);
-		char_array.push_back(value);
+		data->char_array.push_back(value);
 	}
 }
 
-void ConfigObject::ParseUChar(vector<string> content)
+void ConfigObject::ParseUChar(string name, vector<string> content)
 {
+	ConfigData* data = CreateData(name);
 	for (size_t i = 0; i < content.size(); i++)
 	{
 		unsigned char value = stoi(content[i]);
-		uchar_array.push_back(value);
+		data->int_array.push_back(value);
 	}
 }
-void ConfigObject::ParseShort(vector<string> content)
+void ConfigObject::ParseShort(string name, vector<string> content)
 {
+	ConfigData* data = CreateData(name);
 	for (size_t i = 0; i < content.size(); i++)
 	{
 		short value = stoi(content[i]);
-		short_array.push_back(value);
+		data->short_array.push_back(value);
 	}
 }
 
-void ConfigObject::ParseUShort(vector<string> content)
+void ConfigObject::ParseUShort(string name, vector<string> content)
 {
+	ConfigData* data = CreateData(name);
 	for (size_t i = 0; i < content.size(); i++)
 	{
 		unsigned short value = stoi(content[i]);
-		ushort_array.push_back(value);
+		data->ushort_array.push_back(value);
 	}
 }
 
-void ConfigObject::ParseInt(vector<string> content)
+void ConfigObject::ParseInt(string name, vector<string> content)
 {
+	ConfigData* data = CreateData(name);
 	for (size_t i = 0; i < content.size(); i++)
 	{
 		int value = stoi(content[i]);
-		int_array.push_back(value);
+		data->int_array.push_back(value);
 	}
 }
 
-void ConfigObject::ParseUInt(vector<string> content)
+void ConfigObject::ParseUInt(string name, vector<string> content)
 {
+	printf("开始插入 名字:%s\ns", name);
+	ConfigData* data = CreateData(name);
 	for (size_t i = 0; i < content.size(); i++)
 	{
 		unsigned int value = stoi(content[i]);
-		uint_array.push_back(value);
+		data->uint_array.push_back(value);
+		printf("插入uint %d\n", value);
 	}
 }
 
-void ConfigObject::ParseFloat(vector<string> content)
+void ConfigObject::ParseFloat(string name, vector<string> content)
 {
+	ConfigData* data = CreateData(name);
 	for (size_t i = 0; i < content.size(); i++)
 	{
 		float value = stod(content[i]);
-		float_array.push_back(value);
+		data->float_array.push_back(value);
 	}
 }
 
-void ConfigObject::ParseDouble(vector<string> content)
+void ConfigObject::ParseDouble(string name, vector<string> content)
 {
+	ConfigData* data = CreateData(name);
 	for (size_t i = 0; i < content.size(); i++)
 	{
 		double value = stod(content[i]);
-		double_array.push_back(value);
+		data->double_array.push_back(value);
 	}
 }
 
-void ConfigObject::ParseString(vector<string> content)
+void ConfigObject::ParseString(string name, vector<string> content)
 {
+	ConfigData* data = CreateData(name);
 	for (size_t i = 0; i < content.size(); i++)
 	{
-		string_array.push_back(content[i]);
+		data->string_array.push_back(content[i]);
 	}
 }
 
-void ConfigObject::ParseInt2Array(vector<string>content)
+void ConfigObject::ParseInt2Array(string name, vector<string>content)
 {
+	ConfigData* data = CreateData(name);
 	for (size_t i = 0; i < content.size(); i++)
 	{
-		ConfigIntArray* arr;
+		ConfigIntArray* arr = new ConfigIntArray();
 		
 		vector<string> temp1 = CommonUtil::Spilt(content[i], ";");
 
@@ -102,11 +149,9 @@ void ConfigObject::ParseInt2Array(vector<string>content)
 				int value = stoi(temp2[j2]);
 				intarr.push_back(value);
 			}
-
 			arr->Data.push_back(intarr);
 		}
-
-		int2Array.push_back(arr);
+		data->int2Array.push_back(arr);
 	}
 }
 
@@ -153,12 +198,13 @@ void ConfigObject::Load(string path)
 			}
 			else
 			{
+				ConfigRow* row = new ConfigRow(i- 2, this);
+				Data.push_back(row);
 				int count = 0;
 				for (size_t j = 0; j < lineCont.size(); j++)
 				{
 					if (vaildCol.find(j) != vaildCol.end())
 					{
-
 						alldata[count++].push_back(lineCont[j]);
 					}
 				}
@@ -171,14 +217,17 @@ void ConfigObject::Load(string path)
 		
 		if (fieldType[i] == "uint32")
 		{
-			ParseUInt(alldata[i]);
+			cout << "UInt32;";
+			ParseUInt(fieldName[i], alldata[i]);
 		}else if (fieldType[i] == "string")
 		{
-			ParseString(alldata[i]);
+			ParseString(fieldName[i], alldata[i]);
+			cout << "string;";
 		}
 		else if (fieldType[i] == "uchar")
 		{
-			ParseUChar(alldata[i]);
+			ParseUChar(fieldName[i], alldata[i]);
+			cout << "uchar;";
 		}
 	}
 }
@@ -197,8 +246,13 @@ void ConfigMgr::Start()
 		vector<string> temp = CommonUtil::Spilt(define[i], "|");
 		cout << temp[0] << "|" << temp[1]<<endl;
 
-		ConfigObject* obj{};
+		ConfigObject* obj = new ConfigObject();
 		obj->Load(temp[0]);
 		allConfig.insert(make_pair(temp[1], obj));
 	}
+}
+
+ConfigObject* ConfigMgr::Get(string name)
+{
+	return allConfig.at(name);
 }

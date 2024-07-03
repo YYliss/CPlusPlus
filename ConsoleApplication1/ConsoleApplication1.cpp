@@ -55,5 +55,11 @@ int main() {
 	//cout << mmmp[1][2][3];
 
 	ConfigMgr::GetPtr()->Start();
+	ConfigObject* obj = ConfigMgr::GetPtr()->Get("TestConfig");
+	printf("row %d\n", obj->Data.size());
+	for (size_t i = 0; i < obj->Data.size(); i++)
+	{
+		printf("nid 第%d 个元素的值：%d\n", i, obj->Data[i]->GetUInt32("nId"));
+	}
 }
 
