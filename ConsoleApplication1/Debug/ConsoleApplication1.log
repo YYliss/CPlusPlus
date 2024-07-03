@@ -1,0 +1,16 @@
+﻿ConsoleApplication1.obj : error LNK2019: 无法解析的外部符号 __imp__accept@12，函数 "void __cdecl accept_cb(int,short,void *)" (?accept_cb@@YAXHFPAX@Z) 中引用了该符号
+ConsoleApplication1.obj : error LNK2019: 无法解析的外部符号 __imp__bind@12，函数 "void __cdecl init_socket(void)" (?init_socket@@YAXXZ) 中引用了该符号
+ConsoleApplication1.obj : error LNK2019: 无法解析的外部符号 __imp__htons@4，函数 "void __cdecl init_socket(void)" (?init_socket@@YAXXZ) 中引用了该符号
+ConsoleApplication1.obj : error LNK2019: 无法解析的外部符号 __imp__inet_addr@4，函数 "void __cdecl init_socket(void)" (?init_socket@@YAXXZ) 中引用了该符号
+ConsoleApplication1.obj : error LNK2019: 无法解析的外部符号 __imp__listen@8，函数 "void __cdecl init_socket(void)" (?init_socket@@YAXXZ) 中引用了该符号
+ConsoleApplication1.obj : error LNK2019: 无法解析的外部符号 __imp__socket@12，函数 "void __cdecl init_socket(void)" (?init_socket@@YAXXZ) 中引用了该符号
+ConsoleApplication1.obj : error LNK2019: 无法解析的外部符号 __imp__WSAStartup@8，函数 _main 中引用了该符号
+ConsoleApplication1.obj : error LNK2019: 无法解析的外部符号 __imp__WSACleanup@0，函数 _main 中引用了该符号
+ConsoleApplication1.obj : error LNK2019: 无法解析的外部符号 __imp__event_base_dispatch，函数 _main 中引用了该符号
+ConsoleApplication1.obj : error LNK2019: 无法解析的外部符号 __imp__event_base_free，函数 _main 中引用了该符号
+ConsoleApplication1.obj : error LNK2019: 无法解析的外部符号 __imp__event_new，函数 "void __cdecl accept_cb(int,short,void *)" (?accept_cb@@YAXHFPAX@Z) 中引用了该符号
+ConsoleApplication1.obj : error LNK2019: 无法解析的外部符号 __imp__event_add，函数 "void __cdecl accept_cb(int,short,void *)" (?accept_cb@@YAXHFPAX@Z) 中引用了该符号
+ConsoleApplication1.obj : error LNK2019: 无法解析的外部符号 __imp__event_init，函数 _main 中引用了该符号
+H:\LearnProject\ConsoleApplication1\packages\aerospike-client-c-libevent.6.6.2\build\native\lib\x64\Debug\aerospike.lib : warning LNK4272: 库计算机类型“x64”与目标计算机类型“x86”冲突
+H:\LearnProject\ConsoleApplication1\packages\aerospike-client-c-libevent.6.6.2\build\native\lib\x64\Debug\event_core.lib : warning LNK4272: 库计算机类型“x64”与目标计算机类型“x86”冲突
+H:\LearnProject\ConsoleApplication1\Debug\ConsoleApplication1.exe : fatal error LNK1120: 13 个无法解析的外部命令

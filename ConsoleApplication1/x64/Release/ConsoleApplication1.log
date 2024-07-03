@@ -1,0 +1,53 @@
+﻿cl : 命令行  warning D9007: “/C”需要“/E, /EP 或 /P”；选项被忽略
+  BitConvert.cpp
+H:\LearnProject\ConsoleApplication1\ConsoleApplication1\BitConvert.cpp(12,12): warning C4244: “=”: 从“short”转换到“unsigned char”，可能丢失数据
+H:\LearnProject\ConsoleApplication1\ConsoleApplication1\BitConvert.cpp(18,12): warning C4244: “=”: 从“unsigned short”转换到“unsigned char”，可能丢失数据
+H:\LearnProject\ConsoleApplication1\ConsoleApplication1\BitConvert.cpp(40,12): warning C4244: “=”: 从“__int64”转换到“unsigned char”，可能丢失数据
+H:\LearnProject\ConsoleApplication1\ConsoleApplication1\BitConvert.cpp(52,12): warning C4244: “=”: 从“unsigned __int64”转换到“unsigned char”，可能丢失数据
+H:\LearnProject\ConsoleApplication1\ConsoleApplication1\BitConvert.cpp(143,9): warning C4244: “return”: 从“__int64”转换到“double”，可能丢失数据
+  ByteSteam.cpp
+  Connect.cpp
+  ConnectMgr.cpp
+  ConsoleApplication1.cpp
+  MemoryAlloc.cpp
+  ReaderSteam.cpp
+  Util.cpp
+  WriterSteam.cpp
+H:\LearnProject\ConsoleApplication1\ConsoleApplication1\WriterSteam.cpp(86,24): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+H:\LearnProject\ConsoleApplication1\ConsoleApplication1\WriterSteam.cpp(91,22): warning C4267: “+=”: 从“size_t”转换到“int”，可能丢失数据
+ConnectMgr.obj : error LNK2001: 无法解析的外部符号 __imp__invalid_parameter_noinfo_noreturn
+ConsoleApplication1.obj : error LNK2001: 无法解析的外部符号 __imp___acrt_iob_func
+ConsoleApplication1.obj : error LNK2001: 无法解析的外部符号 __imp___stdio_common_vfprintf
+MSVCRT.lib(new_scalar.obj) : error LNK2001: 无法解析的外部符号 _callnewh
+MSVCRT.lib(new_scalar.obj) : error LNK2001: 无法解析的外部符号 malloc
+MSVCRT.lib(utility.obj) : error LNK2001: 无法解析的外部符号 _seh_filter_dll
+MSVCRT.lib(utility.obj) : error LNK2001: 无法解析的外部符号 _configure_narrow_argv
+MSVCRT.lib(exe_main.obj) : error LNK2001: 无法解析的外部符号 _configure_narrow_argv
+MSVCRT.lib(utility.obj) : error LNK2001: 无法解析的外部符号 _initialize_narrow_environment
+MSVCRT.lib(exe_main.obj) : error LNK2001: 无法解析的外部符号 _initialize_narrow_environment
+MSVCRT.lib(utility.obj) : error LNK2001: 无法解析的外部符号 _initialize_onexit_table
+MSVCRT.lib(utility.obj) : error LNK2001: 无法解析的外部符号 _register_onexit_function
+MSVCRT.lib(utility.obj) : error LNK2001: 无法解析的外部符号 _execute_onexit_table
+MSVCRT.lib(utility.obj) : error LNK2001: 无法解析的外部符号 _crt_atexit
+MSVCRT.lib(utility.obj) : error LNK2001: 无法解析的外部符号 _crt_at_quick_exit
+MSVCRT.lib(utility.obj) : error LNK2001: 无法解析的外部符号 _cexit
+MSVCRT.lib(exe_main.obj) : error LNK2001: 无法解析的外部符号 _cexit
+MSVCRT.lib(exe_main.obj) : error LNK2001: 无法解析的外部符号 _seh_filter_exe
+MSVCRT.lib(exe_main.obj) : error LNK2001: 无法解析的外部符号 _set_app_type
+MSVCRT.lib(exe_main.obj) : error LNK2001: 无法解析的外部符号 __setusermatherr
+MSVCRT.lib(exe_main.obj) : error LNK2001: 无法解析的外部符号 _get_initial_narrow_environment
+MSVCRT.lib(exe_main.obj) : error LNK2001: 无法解析的外部符号 _initterm
+MSVCRT.lib(exe_main.obj) : error LNK2001: 无法解析的外部符号 _initterm_e
+MSVCRT.lib(exe_main.obj) : error LNK2001: 无法解析的外部符号 exit
+MSVCRT.lib(exe_main.obj) : error LNK2001: 无法解析的外部符号 _exit
+MSVCRT.lib(exe_main.obj) : error LNK2001: 无法解析的外部符号 _set_fmode
+MSVCRT.lib(exe_main.obj) : error LNK2001: 无法解析的外部符号 __p___argc
+MSVCRT.lib(exe_main.obj) : error LNK2001: 无法解析的外部符号 __p___argv
+MSVCRT.lib(exe_main.obj) : error LNK2001: 无法解析的外部符号 _c_exit
+MSVCRT.lib(exe_main.obj) : error LNK2001: 无法解析的外部符号 _register_thread_local_exe_atexit_callback
+MSVCRT.lib(exe_main.obj) : error LNK2001: 无法解析的外部符号 _configthreadlocale
+MSVCRT.lib(exe_main.obj) : error LNK2001: 无法解析的外部符号 _set_new_mode
+MSVCRT.lib(exe_main.obj) : error LNK2001: 无法解析的外部符号 __p__commode
+MSVCRT.lib(utility_desktop.obj) : error LNK2001: 无法解析的外部符号 terminate
+MSVCRT.lib(delete_scalar.obj) : error LNK2001: 无法解析的外部符号 free
+H:\LearnProject\ConsoleApplication1\x64\Release\ConsoleApplication1.exe : fatal error LNK1120: 32 个无法解析的外部命令

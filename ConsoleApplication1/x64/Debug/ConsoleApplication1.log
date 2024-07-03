@@ -1,0 +1,8 @@
+﻿  ConfigMgr.cpp
+H:\LearnProject\ConsoleApplication1\ConsoleApplication1\ConfigMgr.cpp(65,15): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+H:\LearnProject\ConsoleApplication1\ConsoleApplication1\ConfigMgr.cpp(148,24): warning C4267: “参数”: 从“size_t”转换到“const int”，可能丢失数据
+H:\LearnProject\ConsoleApplication1\ConsoleApplication1\ConfigMgr.cpp(159,24): warning C4267: “参数”: 从“size_t”转换到“const int”，可能丢失数据
+H:\LearnProject\ConsoleApplication1\ConsoleApplication1\ConfigMgr.cpp(177,4): error C3861: “ParseString”: 找不到标识符
+  ConsoleApplication1.cpp
+H:\LearnProject\ConsoleApplication1\ConsoleApplication1\NetMgr.h(5,10): warning C4067: 预处理器指令后有意外标记 - 应输入换行符
+  正在生成代码...
